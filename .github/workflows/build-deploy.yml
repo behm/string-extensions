@@ -34,7 +34,7 @@ jobs:
           dotnet-version: 5.0.x
           
       - name: Restore packages
-        run: dotnet restore ${{ env.PROJECT_PATH }} --no-restore --configuration Release
+        run: dotnet restore ${{ env.PROJECT_PATH }} --configuration Release
           
       - name: Pack
         run: dotnet pack ${{ env.PROJECT_PATH }} --no-restore --no-build --configuration Release --include-symbols --output ${{ env.PACKAGE_OUTPUT_DIRECTORY }}
@@ -44,7 +44,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run unit tests
-        run: dotnet test -- no-restore --no-build --logger trx --results-directory "TestResults-${{ matrix.dotnet-version }}"
+        run: dotnet test ${{ env.PROJECT_PATH }} --no-restore --no-build --logger trx --results-directory "TestResults-${{ matrix.dotnet-version }}"
   
   publish:
     name: Publish
