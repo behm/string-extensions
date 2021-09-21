@@ -34,13 +34,14 @@ jobs:
           dotnet-version: 5.0.x
           
       - name: Restore packages
-        run: dotnet restore ${{ env.PROJECT_PATH }} --configuration Release
+        run: dotnet restore ${{ env.PROJECT_PATH }}
           
       - name: Pack
         run: dotnet pack ${{ env.PROJECT_PATH }} --no-restore --no-build --configuration Release --include-symbols --output ${{ env.PACKAGE_OUTPUT_DIRECTORY }}
 
   test:
     name: Test
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Run unit tests
@@ -48,6 +49,7 @@ jobs:
   
   publish:
     name: Publish
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Publish to NuGet
