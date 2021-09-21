@@ -14,7 +14,7 @@ on:
   workflow_dispatch:
 
 env:
-  PROJECT_PATH: Behm.Extensions.Strings.csproj
+  PROJECT_PATH: Behm.Extensions.Strings/Behm.Extensions.Strings.csproj
   PACKAGE_OUTPUT_DIRECTORY: ${{ github.workspace }}\output
   NUGET_SOURCE_URL: http://api.nuget.org/v3/index.json
 
