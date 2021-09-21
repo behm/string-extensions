@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Authors>Brian Behm</Authors>
+    <Company />
+    <Description>A library of handy string extensions</Description>
+    <Copyright>Copyright 2021 Brian Behm</Copyright>
+    <PackageProjectUrl>https://github.com/behm/string-extensions</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/behm/string-extensions</RepositoryUrl>
+    <PackageTags>string, extensions</PackageTags>
+  </PropertyGroup>
+
+</Project>
