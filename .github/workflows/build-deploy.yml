@@ -42,17 +42,18 @@ jobs:
       - name: Pack
         run: dotnet pack ${{ env.PROJECT_PATH }} --no-restore --no-build --configuration Release --include-symbols --output ${{ env.PACKAGE_OUTPUT_DIRECTORY }}
 
-  test:
-    name: Test
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Run unit tests
-        run: dotnet test ${{ env.PROJECT_PATH }} --no-restore --no-build --logger trx --results-directory "TestResults-${{ matrix.dotnet-version }}"
+#  test:
+#    name: Test
+#    needs: build
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Run unit tests
+#        run: dotnet test ${{ env.PROJECT_PATH }} --no-restore --no-build --logger trx --results-directory "TestResults-${{ matrix.dotnet-version }}"
   
   publish:
     name: Publish
-    needs: test
+    #needs: test
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Publish to NuGet
