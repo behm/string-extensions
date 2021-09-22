@@ -57,4 +57,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Publish to NuGet
-        run: dotnet nuget push /**/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s ${{ env.NUGET_SOURCE_URL }}
+        run: dotnet nuget push Behm.Extensions.Strings/**/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s ${{ env.NUGET_SOURCE_URL }}
