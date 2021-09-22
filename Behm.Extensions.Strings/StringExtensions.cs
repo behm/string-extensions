@@ -66,5 +66,35 @@ namespace Behm.Extensions.Strings
 
             return new String(reversed);
         }
+
+        public static string Left(this string str, int count)
+        {
+            if (str == null)
+            {
+                return str;
+            }
+
+            if (str.Length <= count)
+            {
+                return str;
+            }
+
+            return str.Substring(0, count);
+        }
+
+        public static string Right(this string str, int count)
+        {
+            if (str == null)
+            {
+                return str;
+            }
+
+            if (str.Length <= count)
+            {
+                return str;
+            }
+
+            return str.Substring(str.Length - count);
+        }
     }
 }

@@ -146,5 +146,39 @@ namespace Behm.Extension.Strings.Tests
             // Assert
             result.Should().Be(expectedResult);
         }
+
+        [Theory]
+        [InlineData("testing123", 4, "test")]
+        [InlineData("tst", 5, "tst")]
+        [InlineData("", 5, "")]
+        [InlineData(" ", 7, " ")]
+        [InlineData(null, 10, null)]
+        public void Left_GivenValue_ReturnsExpectedResult(string testString, int count, string expectedResult)
+        {
+            // Arrange
+
+            // Act
+            var result = testString.Left(count);
+
+            // Assert
+            result.Should().Be(expectedResult);
+        }
+
+        [Theory]
+        [InlineData("testing123", 4, "g123")]
+        [InlineData("tst", 5, "tst")]
+        [InlineData("", 5, "")]
+        [InlineData(" ", 7, " ")]
+        [InlineData(null, 10, null)]
+        public void Right_GivenValue_ReturnsExpectedResult(string testString, int count, string expectedResult)
+        {
+            // Arrange
+
+            // Act
+            var result = testString.Right(count);
+
+            // Assert
+            result.Should().Be(expectedResult);
+        }
     }
 }
