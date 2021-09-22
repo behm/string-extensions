@@ -22,7 +22,7 @@ env:
 jobs:
   # This workflow contains a single job called "build"
   build:
-    name: Build
+    name: Build, Test, Deploy
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -38,9 +38,13 @@ jobs:
 
       - name: Build project
         run: dotnet build ${{ env.PROJECT_PATH }} --no-restore --configuration Release
+        
+      - name: Run unit tests
+        run: dotnet test ${{ env.PROJECT_PATH }} --no-restore --no-build --logger trx 
+                 #--results-directory "TestResults-${{ matrix.dotnet-version }}"
 
       - name: Pack
-        run: dotnet pack ${{ env.PROJECT_PATH }} --no-restore --no-build --configuration Release --include-symbols -p:PackageVersion=1.0.2 --output ${{ env.PACKAGE_OUTPUT_DIRECTORY }}
+        run: dotnet pack ${{ env.PROJECT_PATH }} --no-restore --no-build --configuration Release --include-symbols -p:PackageVersion=1.0.3 --output ${{ env.PACKAGE_OUTPUT_DIRECTORY }}
         
       - name: Publish
         run: dotnet nuget push ${{ env.PACKAGE_OUTPUT_DIRECTORY }}/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s ${{ env.NUGET_SOURCE_URL }}
