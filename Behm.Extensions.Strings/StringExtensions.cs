@@ -1,4 +1,6 @@
-﻿namespace Behm.Extensions.Strings
+﻿using System;
+
+namespace Behm.Extensions.Strings
 {
     public static class StringExtensions
     {
@@ -20,6 +22,49 @@
             }
 
             return str;
+        }
+
+        public static string GetDefaultIfEmpty(this string str, string defaultValue)
+        {
+            if (string.IsNullOrEmpty(str))
+            {
+                return defaultValue;
+            }
+
+            return str;
+        }
+
+        public static bool IsEmpty(this string str)
+        {
+            return str == "" || str == string.Empty;
+        }
+
+        public static bool IsInteger(this string str)
+        {
+            return int.TryParse(str, out var _);
+        }
+
+        public static bool IsNumeric(this string str)
+        {
+            return double.TryParse(str, out var _);
+        }
+
+        public static string Reverse(this string str)
+        {
+            if (string.IsNullOrWhiteSpace(str) || str.Length == 1)
+            {
+                return str;
+            }
+
+            var reversed = new char[str.Length];
+            var index = 0;
+
+            for (var i=reversed.Length; i>0; i--)
+            {
+                reversed[index++] = str[i-1];
+            }
+
+            return new String(reversed);
         }
     }
 }
