@@ -41,6 +41,9 @@ jobs:
 
       - name: Pack
         run: dotnet pack ${{ env.PROJECT_PATH }} --no-restore --no-build --configuration Release --include-symbols --output ${{ env.PACKAGE_OUTPUT_DIRECTORY }}
+        
+      - name: Publish
+        run: dotnet nuget push ${{ env.PACKAGE_OUTPUT_DIRECTORY }}/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s ${{ env.NUGET_SOURCE_URL }}
 
 #  test:
 #    name: Test
@@ -50,11 +53,11 @@ jobs:
 #      - name: Run unit tests
 #        run: dotnet test ${{ env.PROJECT_PATH }} --no-restore --no-build --logger trx --results-directory "TestResults-${{ matrix.dotnet-version }}"
   
-  publish:
-    name: Publish
-    #needs: test
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Publish to NuGet
-        run: dotnet nuget push ${{ env.PACKAGE_OUTPUT_DIRECTORY }}/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s ${{ env.NUGET_SOURCE_URL }}
+#  publish:
+#    name: Publish
+#    #needs: test
+#    needs: build
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Publish to NuGet
+#        run: dotnet nuget push ${{ env.PACKAGE_OUTPUT_DIRECTORY }}/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s ${{ env.NUGET_SOURCE_URL }}
