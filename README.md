@@ -1,6 +1,5 @@
 [![Continuous Integration](https://github.com/behm/string-extensions/actions/workflows/ci.yml/badge.svg)](https://github.com/behm/string-extensions/actions/workflows/ci.yml)
-![Nuget](https://img.shields.io/nuget/v/Behm.Extensions.Strings)
-
+[![Nuget](https://img.shields.io/nuget/v/Behm.Extensions.Strings)](https://www.nuget.org/packages/behm/string-extensions)
 
 # Behm.Extensions.Strings
 .NET string extensions
